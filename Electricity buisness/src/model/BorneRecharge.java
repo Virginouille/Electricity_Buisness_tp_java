@@ -6,16 +6,16 @@ import java.util.Scanner;
 
 public class BorneRecharge { // Faire implements BornesServices
 
+    //Problème ajout bornes qui fait n'imp entre borneRecharge et LieuRecharge
     /**Attributs*/
     private int id = this.attributionId();
-    private static EtatBorne etat;
+    private EtatBorne etat;
     private double tarifHoraire;
     private String nomBorne;
 
     /**Constructeur*/
     //Constructeur par defaut
-
-    //Pour l'instant le constructeur est par defaut
+    //Pour l'instant le constructeur est par defaut à corriger pour éviter doublon console
 
     /**Méthode menu administration borne*/
     public void menuBorne() { //Gestion des cases en cours
@@ -84,7 +84,7 @@ public class BorneRecharge { // Faire implements BornesServices
         System.out.println("Nom borne : " + nomBorne);
         System.out.println("Etat borne : " + etat);
         System.out.println("Tarif horaire : " + tarifHoraire);
-
+        System.out.println("ID Borne: " + id);
 
         BorneRecharge borne = new BorneRecharge();
         borne.setNomBorne(nomBorne);
@@ -96,6 +96,15 @@ public class BorneRecharge { // Faire implements BornesServices
     }
     /**Méthode modification borne*/
     /**Méthode suppression borne*/
+
+    /**Méthode toString()*/
+    @Override
+    public String toString() {
+        return "Borne [ID: " + id +
+                ", Nom: " + nomBorne +
+                ", État: " + etat +
+                ", Tarif horaire: " + tarifHoraire + " €/h]";
+    }
 
     /**Getters et setters*/
     public int getId() {
@@ -109,7 +118,7 @@ public class BorneRecharge { // Faire implements BornesServices
         return etat;
     }
     public void setEtat(EtatBorne etat) {
-        BorneRecharge.etat = etat;
+        this.etat = etat;
     }
     public double getTarifHoraire() {
         return tarifHoraire;
@@ -120,8 +129,8 @@ public class BorneRecharge { // Faire implements BornesServices
     public String getattributionId() {
         return String.valueOf(attributionId());
     }
-    public String getAjoutBorne() {
-        return String.valueOf(ajoutBorne());
+    public BorneRecharge getAjoutBorne() {
+        return ajoutBorne();
     }
     public String getNomBorne() {
         return nomBorne;

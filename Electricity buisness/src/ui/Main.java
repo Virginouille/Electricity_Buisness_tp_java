@@ -10,8 +10,20 @@ import model.BorneRecharge;
 public class Main {
     public static void main(String[] args) {
 
-        BorneRecharge borne = new BorneRecharge();//Pour test
-        LieuRecharge lieuRecharge = new LieuRecharge();//Pour test
+        LieuRecharge lieuRecharge = new LieuRecharge(); // test lieu vide
+
+        BorneRecharge borneTemp = new BorneRecharge();
+        BorneRecharge nouvelleBorne = borneTemp.getAjoutBorne(); //test
+        BorneRecharge nouvelleBorne2 = borneTemp.getAjoutBorne(); //test
+
+        if (nouvelleBorne != null) {
+            lieuRecharge.ajouterBorne(nouvelleBorne);
+        }
+
+        for (BorneRecharge borne : lieuRecharge.getBornesRecharge()) {
+            System.out.println("Borne ajoutée, nom borne :  " + borne.getNomBorne() + ", État : " + borne.getEtat() + ", Tarif : " + borne.getTarifHoraire());
+        }//ajout id borne
+        System.out.println(lieuRecharge.getBornesRecharge());
 
         /**Instances*///test
         Utilisateur utilisateur1 = new Utilisateur("email", "motdepasse");//Pour test
@@ -47,7 +59,7 @@ public class Main {
                     if (choixUtilisateur.equalsIgnoreCase("l")) {
                         //lieuRecharge.menuLieu();
                     } else {
-                        borne.menuBorne();
+                        nouvelleBorne.menuBorne();
                     }
                 break;
         }

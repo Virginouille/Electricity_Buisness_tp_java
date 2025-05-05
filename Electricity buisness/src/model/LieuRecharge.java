@@ -4,8 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-import model.BorneRecharge;
-
 /**Classe LieuRecharge*/
 
 public class LieuRecharge {
@@ -23,7 +21,15 @@ public class LieuRecharge {
     /**Méthode qui ajoute une borne dans la liste bornes*///Problement d'ajout à la liste à corriger
     public void ajouterBorne(BorneRecharge borne) {
         borneRecharge.add(borne);
-        System.out.println("Borne" + borne.getNomBorne() + "ajoutée");
+        System.out.println("Borne " + borne.getNomBorne() + " ajoutée à la liste des bornes");
+    }
+
+    /**
+     * Méthode pour afficher les bornes présentent dans la liste
+     */
+    @Override
+    public String toString() {
+        return "listes bornes" + borneRecharge.toString();
     }
 
     /**Méthode qui permet d'ajouter un lieu de recharge*/
@@ -39,6 +45,7 @@ public class LieuRecharge {
 
         return choixUtilisateur;
     }
+
     /**Getters et setters*/
     public int getId() {
         return id;

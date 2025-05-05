@@ -11,12 +11,21 @@ public class Utilisateur { //implements AuthentificationService
     /**Attributs de la classe utilisateur*/
     private int id, codeDeValidation = 0;
     private boolean estValide = true;
-    private String email, motDePasse;
+    private String email, motDePasse, nomUtilisateur, prenomUtilisateur;
+
 
     /**Constructeur Utilisateur*/
     public Utilisateur(String email, String motDePasse) {
         this.email = email;
         this.motDePasse = motDePasse;
+    }
+
+    //Constucteur pour réservation
+    public Utilisateur(String nomUtilisateur, String prenomUtilisateur,String email, int id) {
+        this.nomUtilisateur = nomUtilisateur;
+        this.prenomUtilisateur = prenomUtilisateur;
+        this.email = email;
+        this.id = id;
     }
 
     /***Méthodes****/
