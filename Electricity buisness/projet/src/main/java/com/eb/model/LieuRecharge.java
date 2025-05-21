@@ -1,17 +1,25 @@
-package model;
+package com.eb.model;
+
+import jakarta.persistence.*;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
 /**Classe LieuRecharge*/
-
+@Entity
+@Table(name = "lieuRecharge")
 public class LieuRecharge {
 
     /**Attributs*/
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String nom, adresse;
-    private List<BorneRecharge>borneRecharge = new ArrayList<BorneRecharge>();
+
+    @OneToMany(mappedBy = "lieuRecharge", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<BorneRecharge>borneRecharges = new ArrayList<BorneRecharge>();
 
     /**Constructeur*/
 
@@ -20,7 +28,7 @@ public class LieuRecharge {
 
     /**Méthode qui ajoute une borne dans la liste bornes*///Problement d'ajout à la liste à corriger
     public void ajouterBorne(BorneRecharge borne) {
-        borneRecharge.add(borne);
+        borneRecharges.add(borne);
         System.out.println("Borne " + borne.getNomBorne() + " ajoutée à la liste des bornes");
     }
 
@@ -29,7 +37,7 @@ public class LieuRecharge {
      */
     @Override
     public String toString() {
-        return "listes bornes" + borneRecharge.toString();
+        return "listes bornes" + borneRecharges.toString();
     }
 
     /**Méthode qui permet d'ajouter un lieu de recharge*/
@@ -63,14 +71,14 @@ public class LieuRecharge {
         this.adresse = adresse;
     }
     public List<BorneRecharge> getBornesRecharge() {
-        return borneRecharge;
+        return borneRecharges;
     }
 
     public List<BorneRecharge> getBorneRecharge() {
-        return borneRecharge;
+        return borneRecharges;
     }
 
     public void setBorneRecharge(List<BorneRecharge> borneRecharge) {
-        this.borneRecharge = borneRecharge;
+        this.borneRecharges = borneRecharge;
     }
 }

@@ -1,14 +1,24 @@
-package model;
+package com.eb.model;
+
+import jakarta.persistence.*;
 
 import java.time.LocalDate;
 
 /**Classe réservation*/
-
+@Entity
+@Table(name= "reservation")
 public class Reservation {
 
     /**Attributs*/
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+
+    @ManyToOne
+    @JoinColumn (name = "utilisateurid")
     private Utilisateur utilisateur;
+
     private BorneRecharge borne;
     private LocalDate dateDebut, dateFin;
     private StatutReservation statut;
@@ -21,6 +31,9 @@ public class Reservation {
         this.dateDebut = dateDebut;
         this.dateFin = dateFin;
         this.statut = statut;
+    }
+
+    public Reservation() {
     }
 
     /**Méthode pour créer une reservation*/

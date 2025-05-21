@@ -1,4 +1,4 @@
-package model;
+package com.eb.model;
 
 /**Enum sur l'état de la borne*/
 public enum EtatBorne {

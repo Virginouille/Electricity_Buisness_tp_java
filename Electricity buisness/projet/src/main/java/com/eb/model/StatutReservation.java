@@ -1,4 +1,4 @@
-package model;
+package com.eb.model;
 
 /**Enum Statut Réservation*/
 public enum StatutReservation {

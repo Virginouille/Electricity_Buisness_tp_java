@@ -1,17 +1,28 @@
-package model;
+package com.eb.model;
 
 import interfaces.AuthentificationService;
+import jakarta.persistence.*;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 /**Classe utilisateur*/
-
+@Entity
+@Table(name= "utilisateur")
 public class Utilisateur { //implements AuthentificationService
 
     /**Attributs de la classe utilisateur*/
-    private int id, codeDeValidation = 0;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
+
+    private int codeDeValidation = 0;
     private boolean estValide = true;
     private String email, motDePasse, nomUtilisateur, prenomUtilisateur;
+
+    @OneToMany(mappedBy = "reservation", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Reservation> reservations = new ArrayList<>();
 
 
     /**Constructeur Utilisateur*/
@@ -26,6 +37,10 @@ public class Utilisateur { //implements AuthentificationService
         this.prenomUtilisateur = prenomUtilisateur;
         this.email = email;
         this.id = id;
+    }
+
+    public Utilisateur() {
+
     }
 
     /***Méthodes****/
