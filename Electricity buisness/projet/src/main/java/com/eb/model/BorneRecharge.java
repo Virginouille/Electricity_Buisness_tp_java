@@ -1,17 +1,37 @@
 package com.eb.model;
 
+import jakarta.persistence.*;
+
 import java.util.Scanner;
 
 /**Classe BorneRecharge*/
-
+@Entity
+@Table(name = "borne_recharge")
 public class BorneRecharge { // Faire implements BornesServices
 
     //Problème ajout bornes qui fait n'imp entre borneRecharge et LieuRecharge
     /**Attributs*/
-    private int id = this.attributionId();
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column (name = "borne_recharge-id")
+    private int id;
+
+    @Column (name = "etat_borne")
     private EtatBorne etat;
+
+    @Column (name = "tarif_horaire")
     private double tarifHoraire;
+
+    @Column (name = "nom_borne")
     private String nomBorne;
+
+    @ManyToOne
+    @JoinColumn(name = "lieu_recharge_id")
+    private LieuRecharge lieuRecharge;
+
+    @OneToMany(mappedBy = "borne_recharge", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Reservation reservation;
 
     /**Constructeur*/
     //Constructeur par defaut

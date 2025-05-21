@@ -1,4 +1,4 @@
-package interfaces;
+package com.eb.interfaces;
 
 /**Interface AuthentificationServices*/
 public interface AuthentificationService {

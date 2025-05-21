@@ -1,11 +1,16 @@
 package com.eb.model;
 
-import interfaces.AuthentificationService;
+
 import jakarta.persistence.*;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotEmpty;
+
 
 /**Classe utilisateur*/
 @Entity
@@ -15,13 +20,30 @@ public class Utilisateur { //implements AuthentificationService
     /**Attributs de la classe utilisateur*/
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "utilisateur_id")
     private int id;
 
     private int codeDeValidation = 0;
     private boolean estValide = true;
-    private String email, motDePasse, nomUtilisateur, prenomUtilisateur;
 
-    @OneToMany(mappedBy = "reservation", cascade = CascadeType.ALL, orphanRemoval = true)
+    @Column(name = "email", unique=true, nullable=false)
+    @NotBlank
+    @Email
+    private String email;
+
+    @Column(name = "mot_de_passe")
+    @NotBlank
+    private String motDePasse;
+
+    @Column(name ="nom_utilisateur")
+    @NotBlank
+    private String nomUtilisateur;
+
+    @Column(name ="prenom_utilisateur")
+    @NotBlank
+    private String prenomUtilisateur;
+
+    @OneToMany(mappedBy = "utilisateur", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Reservation> reservations = new ArrayList<>();
 
 
@@ -143,5 +165,45 @@ public class Utilisateur { //implements AuthentificationService
     }
     public int getGenerationCode() {
         return generationCode();
+    }
+
+    public boolean isEstValide() {
+        return estValide;
+    }
+
+    public void setEstValide(boolean estValide) {
+        this.estValide = estValide;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setMotDePasse(String motDePasse) {
+        this.motDePasse = motDePasse;
+    }
+
+    public String getNomUtilisateur() {
+        return nomUtilisateur;
+    }
+
+    public void setNomUtilisateur(String nomUtilisateur) {
+        this.nomUtilisateur = nomUtilisateur;
+    }
+
+    public String getPrenomUtilisateur() {
+        return prenomUtilisateur;
+    }
+
+    public void setPrenomUtilisateur(String prenomUtilisateur) {
+        this.prenomUtilisateur = prenomUtilisateur;
+    }
+
+    public List<Reservation> getReservations() {
+        return reservations;
+    }
+
+    public void setReservations(List<Reservation> reservations) {
+        this.reservations = reservations;
     }
 }

@@ -13,14 +13,25 @@ public class Reservation {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column (name = "reservation_id")
     private int id;
 
     @ManyToOne
-    @JoinColumn (name = "utilisateurid")
+    @JoinColumn (name = "utilisateur_id")
     private Utilisateur utilisateur;
 
+    @ManyToOne
+    @JoinColumn(name = "borne_recharge_id")
     private BorneRecharge borne;
-    private LocalDate dateDebut, dateFin;
+
+    @Column (name = "date_debut")
+    private LocalDate dateDebut;
+
+    @Column (name = "date_fin")
+    private LocalDate dateFin;
+
+    @OneToMany (mappedBy = "reservation", cascade = CascadeType.ALL, orphanRemoval = true)
+    @Column (name = "statut_reservation")
     private StatutReservation statut;
 
     /**Constructeur reservation*/

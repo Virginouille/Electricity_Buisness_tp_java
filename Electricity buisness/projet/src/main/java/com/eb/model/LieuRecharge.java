@@ -1,6 +1,7 @@
 package com.eb.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,17 +9,25 @@ import java.util.Scanner;
 
 /**Classe LieuRecharge*/
 @Entity
-@Table(name = "lieuRecharge")
+@Table(name = "lieu_recharge")
 public class LieuRecharge {
 
     /**Attributs*/
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "lieu_recharge_id")
     private int id;
-    private String nom, adresse;
 
-    @OneToMany(mappedBy = "lieuRecharge", cascade = CascadeType.ALL, orphanRemoval = true)
+    @Column(name = "nom", length = 100)
+    @NotBlank
+    private String nom;
+
+    @Column(name = "adresse")
+    @NotBlank
+    private String adresse;
+
+    @OneToMany(mappedBy = "lieu_recharge", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<BorneRecharge>borneRecharges = new ArrayList<BorneRecharge>();
 
     /**Constructeur*/
