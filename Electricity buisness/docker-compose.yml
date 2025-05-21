@@ -3,7 +3,7 @@ version: '3.8'
 services:
   mysql:
     image: mysql:8.3
-    container_name: mysql
+    container_name: mysql_eb
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: testdb
@@ -16,7 +16,7 @@ services:
 
   app:
     build: ./projet
-    container_name: app
+    container_name: app_eb
     depends_on:
       - mysql
     restart: on-failure

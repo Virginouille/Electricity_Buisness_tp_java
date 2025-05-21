@@ -130,4 +130,13 @@ public abstract class GenericDaoImpl<T, ID> implements GenericDao<T, ID> {
             }
         }
     }
+
+    /**Getters*/
+    public SessionFactory getSessionFactory() {
+        return sessionFactory;
+    }
+
+    public Class<T> getEntityClass() {
+        return entityClass;
+    }
 }

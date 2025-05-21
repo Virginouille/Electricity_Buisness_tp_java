@@ -19,5 +19,7 @@
         <mapping class="com.eb.model.BorneRecharge"/>
         <mapping class="com.eb.model.LieuRecharge"/>
         <mapping class="com.eb.model.Utilisateur"/>
+        <mapping class="com.eb.model.Reservation"/>
 
-    </session-factory>;
+    </session-factory>
+</hibernate-configuration>

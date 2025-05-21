@@ -10,9 +10,11 @@ public class UtilisateurDao extends GenericDaoImpl<Utilisateur, Integer> {
      * Constructeur session factory et entityclass
      *
      * @param sessionFactory
-     * @param entityClass
      */
-    public UtilisateurDao(SessionFactory sessionFactory, Class<Utilisateur> entityClass) {
-        super(sessionFactory, entityClass);
+    public UtilisateurDao(SessionFactory sessionFactory) {
+        super(sessionFactory, Utilisateur.class);
+    }
+
+    public void ajouterUtilisateur(Utilisateur utilisateur) {
     }
 }
