@@ -1,11 +1,11 @@
-package ui;
+package com.eb.ui;
 
 import java.util.Scanner;
 
-import model.EtatBorne;
-import model.LieuRecharge;
-import model.Utilisateur;
-import model.BorneRecharge;
+import com.eb.model.EtatBorne;
+import com.eb.model.LieuRecharge;
+import com.eb.model.Utilisateur;
+import com.eb.model.BorneRecharge;
 
 public class Main {
     public static void main(String[] args) {
